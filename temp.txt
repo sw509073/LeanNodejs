@@ -1,0 +1,28 @@
+    useEffect(() => {
+    const handleClickOutside = (event) => {
+      const dropdown = document.querySelector('.content');
+      if (dropdown && !dropdown.contains(event.target)) {
+        setShow(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener('click', handleClickOutside);
+    };
+  }, [show]);
+
+
+
+   <span
+                className={`star-icon ${isStarred ? 'starred' : ''}`}
+                onClick={() => {
+                  handleflip();
+                  setIsStarred(!isStarred);
+                  // Save the user's action in local storage
+                  localStorage.setItem('sortStarred', JSON.stringify(!isStarred));
+                }}
+              >
+                ★
+              </span>v
